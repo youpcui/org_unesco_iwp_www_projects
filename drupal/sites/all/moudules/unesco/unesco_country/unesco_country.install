@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Updates the Country node, moves two-letter code to a field and sets short name as the title 
+ */
+function unesco_country_update_7001() {
+  $query = db_query("SELECT nid FROM {node} WHERE type = 'country_profile'");
+  foreach ($query as $node) {
+    $node = node_load($node->nid);
+    $term = array_shift($node->nat);
+    $node->field_country_iso2['und'][0]['value'] = $term->name;
+    $node->field_short_name['und'][0]['value'] = $term->description;
+    node_save($node);
+  }
+}

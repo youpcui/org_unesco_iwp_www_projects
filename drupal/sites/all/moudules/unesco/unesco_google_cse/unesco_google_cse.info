@@ -1,0 +1,9 @@
+name = My Google Custom Search Engine
+description = Search my site with Google custom search.
+core = 7.x
+package = UNESCO
+version = 7.x-1.0
+project = unesco_google_cse
+
+; Loadable code files
+files[] = unesco_google_cse.module

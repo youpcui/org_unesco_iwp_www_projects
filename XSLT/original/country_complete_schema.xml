@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="Countries">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" name="ERCDB.dbo.ViewMSList-Regions-grouped">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ISOCode" type="xsd:string" />
+              <xsd:element name="Capital" type="xsd:string" />
+              <xsd:element name="ISO3" type="xsd:string" />
+              <xsd:element name="ExBMem" type="xsd:int" />
+              <xsd:element name="GroupEB" type="xsd:string" />
+              <xsd:element name="WHSites" type="xsd:int" />
+              <xsd:element name="CountryE" type="xsd:string" />
+              <xsd:element name="CountryF" type="xsd:string" />
+              <xsd:element name="CountryS" type="xsd:string" />
+              <xsd:element name="CountryA" type="xsd:string" />
+              <xsd:element name="CountryR" type="xsd:string" />
+              <xsd:element name="CountryC" type="xsd:string" />
+              <xsd:element name="Long_x0020_Country_x0020_NameE" type="xsd:string" />
+              <xsd:element name="Long_x0020_Country_x0020_NameF" type="xsd:string" />
+              <xsd:element name="Long_x0020_Country_x0020_NameS" type="xsd:string" />
+              <xsd:element name="Long_x0020_Country_x0020_NameA" type="xsd:string" />
+              <xsd:element name="Long_x0020_Country_x0020_NameC" type="xsd:string" />
+              <xsd:element name="Long_x0020_Country_x0020_NameR" type="xsd:string" />
+              <xsd:element name="CodeType" type="xsd:int" />
+              <xsd:element name="MembershipDate" type="xsd:dateTime" />
+              <xsd:element name="UNESCO" type="xsd:dateTime" />
+              <xsd:element name="FactSheet" type="xsd:string" />
+              <xsd:element name="GOAP" type="xsd:string" />
+              <xsd:element name="CapitalE" type="xsd:string" />
+              <xsd:element name="CapitalF" type="xsd:string" />
+              <xsd:element name="UNRegionE" type="xsd:string" />
+              <xsd:element name="UNRegionF" type="xsd:string" />
+              <xsd:element name="UNRegionA" type="xsd:string" />
+              <xsd:element name="RegionE" type="xsd:string" />
+              <xsd:element name="RegionF" type="xsd:string" />
+              <xsd:element name="RegionS" type="xsd:string" />
+              <xsd:element name="RegionA" type="xsd:string" />
+              <xsd:element name="RegionC" type="xsd:string" />
+              <xsd:element name="RegionR" type="xsd:string" />
+              <xsd:element name="CountryURL" type="xsd:string" />
+              <xsd:element name="Latitude" type="xsd:decimal" />
+              <xsd:element name="Longitude" type="xsd:decimal" />
+              <xsd:element name="PermDel.dbo.PermDel2xml">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="del_id" type="xsd:int" />
+                    <xsd:element name="ISOCode" type="xsd:string" />
+                    <xsd:element name="ISO3" type="xsd:string" />
+                    <xsd:element name="PermDelNameF" type="xsd:string" />
+                    <xsd:element name="PermDelNameE" type="xsd:string" />
+                    <xsd:element name="address" type="xsd:string" />
+                    <xsd:element name="tel1" type="xsd:string" />
+                    <xsd:element name="tel2" type="xsd:string" />
+                    <xsd:element name="fax1" type="xsd:string" />
+                    <xsd:element name="fax2" type="xsd:string" />
+                    <xsd:element name="email1" type="xsd:string" />
+                    <xsd:element name="email2" type="xsd:string" />
+                    <xsd:element name="notesF" type="xsd:string" />
+                    <xsd:element name="notesE" type="xsd:string" />
+                    <xsd:element name="Amb" type="xsd:int" />
+                    <xsd:element name="Paris" type="xsd:int" />
+                    <xsd:element name="HQ" type="xsd:int" />
+                    <xsd:element name="Observateur" type="xsd:int" />
+                    <xsd:element name="Bilateral" type="xsd:int" />
+                    <xsd:element name="Extra" type="xsd:int" />
+                    <xsd:element name="Language" type="xsd:string" />
+                    <xsd:element name="website" type="xsd:string" />
+                    <xsd:element name="protocol" type="xsd:int" />
+                    <xsd:element name="delegate_nameF" type="xsd:string" />
+                    <xsd:element name="titleF" type="xsd:string" />
+                    <xsd:element name="delegate_nameE" type="xsd:string" />
+                    <xsd:element name="TitleE" type="xsd:string" />
+                    <xsd:element name="nomination_date" type="xsd:dateTime" />
+                    <xsd:element name="Photo" type="xsd:int" />
+                    <xsd:element name="CV_E" type="xsd:string" />
+                    <xsd:element name="CV_F" type="xsd:string" />
+                    <xsd:element name="CV" type="xsd:string" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element maxOccurs="unbounded" name="ERCDB.dbo.HeadsofStates2xml">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Id" type="xsd:int" />
+                    <xsd:element name="ISOCode" type="xsd:string" />
+                    <xsd:element name="ISO3" type="xsd:string" />
+                    <xsd:element name="Country_name" type="xsd:string" />
+                    <xsd:element name="Order" type="xsd:int" />
+                    <xsd:element name="Function" type="xsd:string" />
+                    <xsd:element name="Name" type="xsd:string" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="ERCDB.dbo.FO_By_Country_All_2xml">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="FO_ID" type="xsd:string" />
+                    <xsd:element name="ISOCode" type="xsd:string" />
+                    <xsd:element name="CountryE" type="xsd:string" />
+                    <xsd:element name="FONameE" type="xsd:string" />
+                    <xsd:element name="FONameF" type="xsd:string" />
+                    <xsd:element name="FONameS" type="xsd:string" />
+                    <xsd:element name="FONameA" type="xsd:string" />
+                    <xsd:element name="FONameC" type="xsd:string" />
+                    <xsd:element name="FONameR" type="xsd:string" />
+                    <xsd:element name="TypeOfficeE" type="xsd:string" />
+                    <xsd:element name="TypeOfficeF" type="xsd:string" />
+                    <xsd:element name="TypeOfficeS" type="xsd:string" />
+                    <xsd:element name="TypeOfficeA" type="xsd:string" />
+                    <xsd:element name="RegionE" type="xsd:string" />
+                    <xsd:element name="RegionF" type="xsd:string" />
+                    <xsd:element name="RegionS" type="xsd:string" />
+                    <xsd:element name="ISO3" type="xsd:string" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="NationalCommission">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" name="Country">
+                      <xsd:complexType>
+                        <xsd:attribute name="xml:lang" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" name="Name">
+                      <xsd:complexType>
+                        <xsd:attribute name="xml:lang" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Address" type="xsd:string" />
+                    <xsd:element name="Phone" type="xsd:string" />
+                    <xsd:element name="Fax" type="xsd:string" />
+                    <xsd:element name="Email" type="xsd:string" />
+                    <xsd:element name="WebsiteNC" type="xsd:string" />
+                    <xsd:element maxOccurs="unbounded" name="WebsiteUNESCO">
+                      <xsd:complexType>
+                        <xsd:attribute name="xml:lang" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="NCHeads">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="NCHead">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="CountryCode" type="xsd:string" />
+                                <xsd:element name="NameDel">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="xml:lang" type="xsd:string" />
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="TitleDel">
+                                  <xsd:complexType>
+                                    <xsd:attribute name="xml:lang" type="xsd:string" />
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Photo" type="xsd:string" />
+                              </xsd:sequence>
+                              <xsd:attribute name="memberid" type="xsd:int" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="countryid" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

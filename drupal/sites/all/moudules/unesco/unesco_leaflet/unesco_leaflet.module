@@ -1,0 +1,48 @@
+<?php
+/**
+ * Implements hook_leaflet_map_info().
+ *
+ * All maps show at lat=31, long=-89, zoom=2
+ *
+ * @return array of map info (includes provider URL, attribution, map features)
+ */
+function unesco_leaflet_leaflet_map_info() {
+  return array(
+    'Custom world map image' =>
+    array(
+      'label' => 'Custom world map image',
+      'description' => t('A world map image without bordes and no zoom.'),
+      //'center' => array(
+        //'lat' => 31,
+        //'lon' => -89,
+        //'force' => TRUE,
+      //),
+      'settings' => array(
+        'dragging' => TRUE,
+        'touchZoom' => FALSE,
+        'scrollWheelZoom' => FALSE,
+        'doubleClickZoom' => FALSE,
+        'zoomControl' => FALSE,
+        'attributionControl' => FALSE,
+        'trackResize' => FALSE,
+        'fadeAnimation' => FALSE,
+        'zoomAnimation' => FALSE,
+        'closePopupOnClick' => TRUE,
+        'layerControl' => FALSE,
+        'zoom' => 0,
+        'maxZoom' => 0,
+        'setView' => FALSE,
+        'maxClusterRadius' => 20,
+        'disableClusteringAtZoom' => 2,
+      ),
+      'layers' => array(
+        'earth' => array(
+          'urlTemplate' => 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          'options' => array(
+            'attribution' => 'Â© UNESCO',
+          )
+        ),
+      ),
+    ),
+  );
+}

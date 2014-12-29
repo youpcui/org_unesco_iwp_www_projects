@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="Permanent_Delegation">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" name="PermDel.dbo.PermDel2xml">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="del_id" type="xsd:int" />
+              <xsd:element name="ISOCode" type="xsd:string" />
+              <xsd:element name="ISO3" type="xsd:string" />
+              <xsd:element name="PermDelNameF" type="xsd:string" />
+              <xsd:element name="PermDelNameE" type="xsd:string" />
+              <xsd:element name="address" type="xsd:string" />
+              <xsd:element name="tel1" type="xsd:string" />
+              <xsd:element name="tel2" type="xsd:string" />
+              <xsd:element name="fax1" type="xsd:string" />
+              <xsd:element name="fax2" type="xsd:string" />
+              <xsd:element name="email1" type="xsd:string" />
+              <xsd:element name="email2" type="xsd:string" />
+              <xsd:element name="notesF" type="xsd:string" />
+              <xsd:element name="notesE" type="xsd:string" />
+              <xsd:element name="Amb" type="xsd:int" />
+              <xsd:element name="Paris" type="xsd:int" />
+              <xsd:element name="HQ" type="xsd:int" />
+              <xsd:element name="Observateur" type="xsd:int" />
+              <xsd:element name="Bilateral" type="xsd:int" />
+              <xsd:element name="Extra" type="xsd:int" />
+              <xsd:element name="Language" type="xsd:string" />
+              <xsd:element name="website" type="xsd:string" />
+              <xsd:element name="protocol" type="xsd:int" />
+              <xsd:element name="delegate_nameF" type="xsd:string" />
+              <xsd:element name="titleF" type="xsd:string" />
+              <xsd:element name="delegate_nameE" type="xsd:string" />
+              <xsd:element name="TitleE" type="xsd:string" />
+              <xsd:element name="nomination_date" type="xsd:dateTime" />
+              <xsd:element name="Photo" type="xsd:int" />
+              <xsd:element name="CV_E" type="xsd:string" />
+              <xsd:element name="CV_F" type="xsd:string" />
+              <xsd:element name="CV" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

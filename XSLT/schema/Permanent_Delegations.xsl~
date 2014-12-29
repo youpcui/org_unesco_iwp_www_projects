@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <xsl:strip-space elements="*"/>
+    <xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
+
+    <xsl:template match="text()">
+        <xsl:value-of select='normalize-space()'/>
+    </xsl:template>
+
+    <xsl:template match="@*|node()">
+        <xsl:copy>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="ERCDB.dbo.ViewMSList-Regions-grouped">
+        <xsl:copy>
+            <xsl:apply-templates/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/xml_files/Permanent_Delegations.xml')//Permanent_Delegation/PermDel.dbo.PermDel2xml[ISO3=current()/ISO3]"/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/xml_files/HeadsOfStates2xml.xml')//ERCDB.dbo.HeadsofStates2xml[ISO3=current()/ISO3]"/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/xml_files/FO_by_CountryAll2xml.xml')//ERCDB.dbo.FO_By_Country_All_2xml[ISO3=current()/ISO3]"/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/cp/XMLfilesspec_files/NCList_2_xml.asp')//NatCom/NationalCommission[@countryid=current()/ISOCode]"/>  
+        </xsl:copy>
+    </xsl:template>
+   
+    <xsl:template match="PermDel.dbo.PermDel2xml">
+        <xsl:element name="Permanent_Delegation">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="del_id">
+        <xsl:element name="del_id">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="ISOCode">
+        <xsl:element name="ISOCode">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="PermDelNameF">
+        <xsl:element name="PermDelName xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="PermDelNameE">
+        <xsl:element name="PermDelName xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="address">
+        <xsl:element name="address">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="tel1">
+        <xsl:element name="tel1">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="tel2">
+        <xsl:element name="tel2">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="fax1">
+        <xsl:element name="fax1">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="fax2">
+        <xsl:element name="fax2">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="email1">
+        <xsl:element name="email1">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="email2">
+        <xsl:element name="email2">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="notesF">
+        <xsl:element name="notes xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="notesE">
+        <xsl:element name="notes xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Amb">
+        <xsl:element name="Amb">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Paris">
+        <xsl:element name="Paris">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="HQ">
+        <xsl:element name="HQ">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Observateur">
+        <xsl:element name="Observateur">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Bilateral">
+        <xsl:element name="Bilateral">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Extra">
+        <xsl:element name="Extra">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Language">
+        <xsl:element name="Language">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="website">
+        <xsl:element name="website">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="protocol">
+        <xsl:element name="protocol">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="delegate_nameF">
+        <xsl:element name="delegate_name xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="titleF">
+        <xsl:element name="title xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="delegate_nameE">
+        <xsl:element name="delegate_name xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="titleE">
+        <xsl:element name="title xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="nomination_date">
+        <xsl:element name="nomination_date">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Photo">
+        <xsl:element name="Photo">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CV_E">
+        <xsl:element name="CV xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CV_F">
+        <xsl:element name="CV xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CV">
+        <xsl:element name="CV">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionA">
+        <xsl:element name="region xml_lang=AR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionC">
+        <xsl:element name="region xml_lang=CN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionR">
+        <xsl:element name="region xml_lang=RU">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryURL">
+        <xsl:element name="CountryURL">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Latitude">
+        <xsl:element name="Latitude">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Longitude">
+        <xsl:element name="Longitude">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+
+</xsl:stylesheet>

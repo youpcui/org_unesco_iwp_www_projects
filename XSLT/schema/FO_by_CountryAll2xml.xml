@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="FO_by_Country">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" name="ERCDB.dbo.FO_By_Country_All_2xml">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="FO_ID" type="xsd:string" />
+              <xsd:element name="ISOCode" type="xsd:string" />
+              <xsd:element name="CountryE" type="xsd:string" />
+              <xsd:element name="FONameE" type="xsd:string" />
+              <xsd:element name="FONameF" type="xsd:string" />
+              <xsd:element name="FONameS" type="xsd:string" />
+              <xsd:element name="FONameA" type="xsd:string" />
+              <xsd:element name="FONameC" type="xsd:string" />
+              <xsd:element name="FONameR" type="xsd:string" />
+              <xsd:element name="TypeOfficeE" type="xsd:string" />
+              <xsd:element name="TypeOfficeF" type="xsd:string" />
+              <xsd:element name="TypeOfficeS" type="xsd:string" />
+              <xsd:element name="TypeOfficeA" type="xsd:string" />
+              <xsd:element name="RegionE" type="xsd:string" />
+              <xsd:element name="RegionF" type="xsd:string" />
+              <xsd:element name="RegionS" type="xsd:string" />
+              <xsd:element name="ISO3" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

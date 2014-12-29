@@ -1,0 +1,14 @@
+name = UNESCO Leaflet
+description = Contains UNESCO Leaflet customization
+core = 7.x
+package = UNESCO
+version = 7.x-1.0 
+project = unesco_leaflet
+
+
+
+; Loadable code files
+files[] = unesco_leaflet.module
+
+; Module dependencies
+dependencies[] = leaflet

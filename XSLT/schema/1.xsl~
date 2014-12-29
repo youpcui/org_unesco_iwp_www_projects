@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <xsl:strip-space elements="*"/>
+    <xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
+
+    <xsl:template match="text()">
+        <xsl:value-of select='normalize-space()'/>
+    </xsl:template>
+
+    <xsl:template match="@*|node()">
+        <xsl:copy>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="ERCDB.dbo.ViewMSList-Regions-grouped">
+        <xsl:copy>
+            <xsl:apply-templates/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/xml_files/Permanent_Delegations.xml')//Permanent_Delegation/PermDel.dbo.PermDel2xml[ISO3=current()/ISO3]"/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/xml_files/HeadsOfStates2xml.xml')//ERCDB.dbo.HeadsofStates2xml[ISO3=current()/ISO3]"/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/xml_files/FO_by_CountryAll2xml.xml')//ERCDB.dbo.FO_By_Country_All_2xml[ISO3=current()/ISO3]"/>
+            <xsl:copy-of select="document('http://www.unesco.org/eri/cp/XMLfilesspec_files/NCList_2_xml.asp')//NatCom/NationalCommission[@countryid=current()/ISOCode]"/>  
+        </xsl:copy>
+    </xsl:template>
+   
+    <xsl:template match="ERCDB.dbo.ViewMSList-Regions-grouped">
+        <xsl:element name="country">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="ISOCode">
+        <xsl:element name="ISOCode">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Capital">
+        <xsl:element name="capital xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="ISO3">
+        <xsl:element name="ISO3">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="ExBMem">
+        <xsl:element name="ExBMem">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="GroupEB">
+        <xsl:element name="GroupEB xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="WHSites">
+        <xsl:element name="WHSites">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryE">
+        <xsl:element name="name xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryF">
+        <xsl:element name="name xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryS">
+        <xsl:element name="name xml_lang=ES">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryA">
+        <xsl:element name="name xml_lang=AR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryR">
+        <xsl:element name="name xml_lang=RU">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryC">
+        <xsl:element name="name xml_lang=CN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Long_x0020_Country_x0020_NameE">
+        <xsl:element name="long_name xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Long_x0020_Country_x0020_NameF">
+        <xsl:element name="long_name xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Long_x0020_Country_x0020_NameS">
+        <xsl:element name="long_name xml_lang=ES">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Long_x0020_Country_x0020_NameA">
+        <xsl:element name="long_name xml_lang=AR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Long_x0020_Country_x0020_NameC">
+        <xsl:element name="long_name xml_lang=CN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Long_x0020_Country_x0020_NameR">
+        <xsl:element name="long_name xml_lang=RU">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CodeType">
+        <xsl:element name="CodeType">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="MembershipDate">
+        <xsl:element name="MembershipDate">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="UNESCO">
+        <xsl:element name="UNESCO">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="FactSheet">
+        <xsl:element name="FactSheet">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="GOAP">
+        <xsl:element name="GOAP">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CapitalE">
+        <xsl:element name="capital xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CapitalF">
+        <xsl:element name="capital xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="UNRegionE">
+        <xsl:element name="UNRegion xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="UNRegionF">
+        <xsl:element name="UNRegion xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="UNRegionA">
+        <xsl:element name="UNRegion xml_lang=AR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionE">
+        <xsl:element name="region xml_lang=EN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionF">
+        <xsl:element name="region xml_lang=FR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionS">
+        <xsl:element name="region xml_lang=ES">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionA">
+        <xsl:element name="region xml_lang=AR">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionC">
+        <xsl:element name="region xml_lang=CN">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="RegionR">
+        <xsl:element name="region xml_lang=RU">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="CountryURL">
+        <xsl:element name="CountryURL">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Latitude">
+        <xsl:element name="Latitude">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+    <xsl:template match="Longitude">
+        <xsl:element name="Longitude">
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+
+
+</xsl:stylesheet>

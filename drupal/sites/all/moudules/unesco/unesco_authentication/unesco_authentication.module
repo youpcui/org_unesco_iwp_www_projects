@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Code for the UNESCO Authentication feature.
+ */
+
+include_once 'unesco_authentication.features.inc';
+
+function unesco_authentication_menu_alter(&$items)
+{
+  $items['user/password']['access callback'] = FALSE;
+}

@@ -1,0 +1,110 @@
+<?php
+/**
+ * @file
+ * Code for the UNESCO Country feature.
+ */
+
+include_once 'unesco_country.features.inc';
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function unesco_country_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['country_display'] = array(
+    'label' => t('Country display'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function unesco_country_preprocess_node(&$vars) {
+  if ($vars['type'] == 'country_profile' && $vars['view_mode'] == 'country_display') {
+    $vars['theme_hook_suggestions'][] = 'node__country_profile__country_display';
+  }
+}
+
+/**
+ * Implements hook_feeds_after_parse().
+ */
+function unesco_country_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
+  $importer_id = $source->importer()->id;
+  if (substr($importer_id, 0, 23) == 'unesco_country_profile_') {
+    $xpath_map = array(
+      'executive_board_member' => 'xpathparser:7',
+    );
+
+    foreach ($result->items as $key => $item) {
+      // Executive board member
+      // "True" => 1; anything else => 0
+      if ($exec_board_member = $item[$xpath_map['executive_board_member']]) {
+        $result->items[$key][$xpath_map['executive_board_member']] = ($exec_board_member == 'True') ? 1 : 0;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function unesco_country_node_insert($node) {
+  if ($node->type == 'country_profile') {
+    $tnid = _unesco_country_feeds_check_tnid($node);
+    if (!isset($node->tnid) || $node->tnid != $tnid) {
+      // Update {node}.tnid
+      $node->tnid = $tnid;
+      $args = array(':tnid' => $tnid, ':nid' => $node->nid);
+      db_query('UPDATE {node} SET tnid = :tnid WHERE nid = :nid', $args);
+    }
+  }
+}
+
+/**
+ * Aux function that check the translation NID for the given node.
+ *
+ * @param $node Country profile node
+ * @return Translation nid, if available; {node}.nid otherwise
+ */
+function _unesco_country_feeds_check_tnid($node) {
+  if (isset($node->type) && $node->type == 'country_profile') {
+    if (isset($node->language) && !empty($node->language)) {
+      $langcode = $node->language;
+      if (isset($node->field_country_iso3['und'][0]['value']) && !empty($node->field_country_iso3['und'][0]['value'])) {
+        $iso3 = $node->field_country_iso3['und'][0]['value'];
+
+        $sql = 'SELECT n.nid FROM {node} n INNER JOIN {field_data_field_country_iso3} fdfci ON n.vid = fdfci.revision_id WHERE fdfci.field_country_iso3_value = :iso3 AND n.nid = n.tnid';
+        if ($tnid = db_query($sql, array(':iso3' => $iso3))->fetchField()) {
+          // Return fetched tnid here
+          return $tnid;
+        }
+      }
+    }
+  }
+
+  // fallback
+  return (isset($node->tnid) && !empty($node->tnid)) ? $node->tnid : $node->nid;
+}
+
+/**
+ * Implememt hook_countries_alter(&$countries).
+ *
+ */
+function unesco_country_countries_alter(&$countries){
+  global $language;
+
+  $countries = array();
+  $query = db_select("node", "n")
+    ->fields("n", array("nid"))
+    ->condition("type", "country_profile")
+    ->condition(db_or()->condition('language', $language->language, '=')
+    ->condition('language', LANGUAGE_NONE));
+  $results = $query->execute();
+  foreach ($results as $result) {
+    $node = node_load($result->nid);
+    $node_wrapper = entity_metadata_wrapper('node',$node);
+    $country_name = $node_wrapper->title->value();
+    $countries[$node_wrapper->field_country_iso2->value()] = t($country_name);
+    asort($countries);
+  };
+}
